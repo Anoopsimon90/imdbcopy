@@ -1,29 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace IMDBApp
 {
     public class MoviesService : IMoviesService
     {
-
         public List<string> Search(string movieName)
         {
-            return List().Where(x=>x.StartsWith(movieName,StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-        private List<string> List()
-        {
-            return new List<string>
+            var results= File.ReadAllText(@"Files/Movies.txt").Split(new char[] { '\r','\n'}).ToList();
 
-            {
-                "App",
-                "Apple",
-                "Applet",
-                "Application",
-                "Box",
-                "Border",
-                "Bored"
-            };
+            return results.Where(x => x.Contains(movieName, StringComparison.OrdinalIgnoreCase)).ToList();
         }
+       
     }
 }

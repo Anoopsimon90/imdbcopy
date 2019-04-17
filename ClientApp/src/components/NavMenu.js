@@ -12,7 +12,7 @@ export class NavMenu extends Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>my_new_app</Link>
+            <Link to={'/'}>IMDB Clone</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -22,20 +22,15 @@ export class NavMenu extends Component {
               <NavItem>
                 <Glyphicon glyph='home' /> Home
               </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/counter'}>
-              <NavItem>
-                <Glyphicon glyph='education' /> Counter
-              </NavItem>
-            </LinkContainer>
+            </LinkContainer>            
             <LinkContainer to={'/fetchdata'}>
               <NavItem>
                 <Glyphicon glyph='th-list' /> Fetch data
               </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={'/requests'}>
+                    <LinkContainer to={'/movies'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Requests
+                            <Glyphicon glyph='glyphicon  glyphicon-film' /> Movies
               </NavItem>
                     </LinkContainer>
           </Nav>

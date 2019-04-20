@@ -13,21 +13,22 @@ namespace my_new_app.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        [HttpGet("{movie}")]
+        private readonly IMoviesService movies;
+        public MoviesController(IMoviesService movies)
+        {
+            this.movies = movies;
+        }
+        [HttpGet("search/{movie}")]
         public List<string> Get(string movie)
         {
-            IMoviesService movies = new MoviesService();
             return movies.Search(movie);
         }
 
 
-        [HttpGet("movie/{name}")]
+        [HttpGet("details/{name}")]
         public MovieDetails GetMovieDetails(string name)
         {
-            IMoviesService movies = new MoviesService();
-            var result = movies.GetMovieDetails(name);
-
-            return result;
+            return movies.GetMovieDetails(name);
         }
     }
 }

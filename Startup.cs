@@ -1,3 +1,4 @@
+using IMDBApp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +22,7 @@ namespace my_new_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<IMoviesService, MoviesService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

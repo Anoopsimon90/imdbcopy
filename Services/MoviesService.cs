@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IMDBApp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,19 @@ namespace IMDBApp
             var results= File.ReadAllText(@"Files/Movies.txt").Split(new char[] { '\r','\n'}).ToList();
 
             return results.Where(x => x.Contains(movieName, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        public MovieDetails GetMovieDetails(string movieId)
+        {
+            return new MovieDetails
+            {
+                Country="India",
+                Genre="Drama",
+                Id=1,
+                Language="Malayalam",
+                Name="Maheshinte Prathikaram",
+                Year  =2015
+            };
         }
        
     }

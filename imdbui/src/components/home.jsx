@@ -2,7 +2,26 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
 class Home extends Component {
-  state = { redirect: true };
+  constructor(props) {
+    super(props);
+    this.state = {
+      suggested: [],
+      redirect: true
+    };
+  }
+
+  handleChange(event) {
+    fetch("http://localhost:3001/suggest")
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          suggested: result
+        });
+      });
+      console.log(this.state.suggested);
+    //this.setState({value: event.target.value});
+      return(<div><ul>{this.state.suggested.map((item,i) => <li key={i}>{item}</li>)}</ul></div>);
+  }
   render() {
     return (
       <div class="container">
@@ -59,8 +78,14 @@ class Home extends Component {
   </a>
 </div>
 </div>
-</div>
+<div className='row'>
+<div className='col sm'>
 
+<input onChange={(e)=>this.handleChange(e)}></input>
+
+  </div>  </div>
+
+</div>
 
 
 </div>
